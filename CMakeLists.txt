@@ -23,7 +23,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3" CACHE STRING
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include_directories(src)
 
@@ -43,7 +43,7 @@ set(SOURCE_FILES main.cpp)
 add_executable(spedi ${SOURCE_FILES})
 add_dependencies(spedi elf++ dwarf++ disasm capstone)
 
-target_link_libraries(spedi ${CMAKE_SOURCE_DIR}/lib/libelf++.a)
-target_link_libraries(spedi ${CMAKE_SOURCE_DIR}/lib/libdwarf++.a)
-target_link_libraries(spedi ${CMAKE_SOURCE_DIR}/lib/libdisasm.a)
+target_link_libraries(spedi ${CMAKE_BINARY_DIR}/lib/libelf++.a)
+target_link_libraries(spedi ${CMAKE_BINARY_DIR}/lib/libdwarf++.a)
+target_link_libraries(spedi ${CMAKE_BINARY_DIR}/lib/libdisasm.a)
 target_link_libraries(spedi capstone)

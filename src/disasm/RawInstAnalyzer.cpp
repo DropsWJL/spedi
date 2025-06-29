@@ -60,8 +60,8 @@ bool RawInstAnalyzer::isValid(const cs_insn *inst) const {
                     case ARM_INS_MOV:
                     case ARM_INS_SUB:
                     case ARM_INS_SUBW:
-                    case ARM_INS_SUBS:
-                    case ARM_INS_MOVS:
+                    // case ARM_INS_SUBS:
+                    // case ARM_INS_MOVS:
                     case ARM_INS_POP:
                         // XXX more restrictions can be applied here
                         break;
