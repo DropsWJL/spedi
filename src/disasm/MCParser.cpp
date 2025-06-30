@@ -7,7 +7,6 @@
 // Copyright (c) 2015-2016 University of Kaiserslautern.
 
 #include "MCParser.h"
-#include "RawInstWrapper.h"
 #include <cassert>
 #include <stdexcept>
 

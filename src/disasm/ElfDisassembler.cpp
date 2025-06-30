@@ -9,6 +9,7 @@
 #include "./analysis/DisassemblyCFG.h"
 #include "ElfDisassembler.h"
 #include "RawInstWrapper.h"
+#include <cstdint>
 #include <inttypes.h>
 #include <algorithm>
 
@@ -392,7 +393,7 @@ void ElfDisassembler::prettyPrintCFGNode
     auto mblock = cfg_node->maximalBlock();
     printf("**************************************\n");
     printf("MB No. %lu, Type: %u. Starts at %#6x",
-           mblock->id(), cfg_node->getType(),
+           mblock->id(), static_cast<uint32_t>(cfg_node->getType()),
            static_cast<unsigned> (mblock->addrOfFirstInst()));
     printf(" / BB count. %lu, Total inst count %lu: \n",
            mblock->getBasicBlocksCount(), mblock->instructionsCount());
@@ -434,7 +435,7 @@ void ElfDisassembler::prettyPrintValidCFGNode
         auto max_block = cfg_node->maximalBlock();
         printf("**************************************\n");
         printf("MB No. %lu, Type: %u. Starts at %#6x",
-               cfg_node->id(), cfg_node->getType(),
+               cfg_node->id(), static_cast<uint32_t>(cfg_node->getType()),
                static_cast<unsigned >(max_block->addrOfFirstInst()));
         printf(" / BB count. %lu, Total inst count %lu: \n",
                max_block->getBasicBlocksCount(),
@@ -464,10 +465,6 @@ void ElfDisassembler::prettyPrintValidCFGNode
                    inst->addr(),
                    inst->mnemonic().c_str(),
                    inst->operands().c_str());
-//            if (inst->condition() != ARM_CC_AL) {
-//                printf("/ condition: %s",
-//                       m_analyzer.conditionCodeToString(inst->condition()).c_str());
-//            }
             printf("\n");
         }
         printf("Direct branch: %d, Conditional: %d",
