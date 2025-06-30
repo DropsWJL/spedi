@@ -7,8 +7,9 @@
 // Copyright (c) 2015-2016 University of Kaiserslautern.
 
 #pragma once
+#include <string>
 #include <capstone/capstone.h>
-#include "BranchData.h"
+#include "disasm/common.h"
 
 struct cs_insn;
 
